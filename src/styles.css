@@ -45,6 +45,7 @@ body {
 }
 
 .header {
+    border: 1px #fff solid;
     color: white;
     background: #1e1f26;
     display: flex;
@@ -77,6 +78,13 @@ body {
 }
 
 .header .heading,
+.input-name input[type='text'],
+.input-name p {
+    line-height: 1.9;
+    width: 400px;
+}
+
+.header .heading,
 .input-name {
     flex: 1;
     color: white;
@@ -99,7 +107,17 @@ body {
     cursor: pointer;
 }
 
+.grid .header .input-name button:hover {
+    transform: scale(1.1);
+}
+
+.grid .header .input-name button:active {
+    transform: scale(0.9);
+}
+
 .grid .header .input-name button {
+    width: 200px;
+    transition: 200ms ease all;
     padding: 5px;
     font-weight: 800;
     color: black;
@@ -124,6 +142,11 @@ body {
 }
 
 .sidebar-title {
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+    font-weight: bolder;
+    color: #03203c;
     margin-bottom: 10px;
     margin-top: 5px;
     border-bottom: 1px solid white;
@@ -147,7 +170,7 @@ body {
     color: white;
     padding: 5px 5px;
     font-weight: 800;
-    background: #03203c;
+    background: #1F2023;
 }
 
 .live-chat {
@@ -163,11 +186,13 @@ body {
     font-size: 13px;
     text-align: left;
     margin: 5px;
-    color: #252f69;
-    font-weight: 700;
+    color: #fff;
+    background-color: #03203c;
+    font-weight: bolder;
     border: #03203c solid 1px;
     border-radius: 8px;
-    padding: 5px 10px;
+    padding: 0 10px;
+    line-height: 1.6;
 }
 
 .live-chat .input-send {
@@ -296,10 +321,11 @@ body {
 
 
 .message-wrapper {
+    overflow-x: hidden;
     overflow-y: scroll;
     overflow-scrolling: auto;
     height: 80%;
-    width: auto;
+    width: 100%;
 }
 
 

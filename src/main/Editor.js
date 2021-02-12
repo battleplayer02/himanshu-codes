@@ -14,7 +14,10 @@ export default function Editor(props) {
     const [val,stVl] = useState(value);
 
     function handleChange(editor, data, value) {
-        socketVar.emit(language, value);
+        var timer = setTimeout(()=>{
+            socketVar.emit(language, value);
+            clearTimeout(timer);
+        },1000)
         onChange(value);
     }
 
