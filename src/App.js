@@ -21,7 +21,7 @@ var Parda = () => {
     }}>
         <h1
             style={{
-                color: "wheat", fontSize: '50px',letterSpacing:"6px"
+                color: "wheat", fontSize: '50px', letterSpacing: "6px"
             }}
         >
             Enter Your Username .

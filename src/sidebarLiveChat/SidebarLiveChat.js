@@ -1,17 +1,17 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 
 export default function SidebarLiveChat({socket}) {
-    const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+    const [messages, setMessages] = useState([]);
+    const [data, setData] = useState([]);
 
-    socket.on('code-share-message', (data) => {
-        setMessages([...messages, data]);
-        console.log(data);
-    });
+    // var fun = () => messages.map(mes => <p className="message">{mes}</p>)
+
+    socket.on('code-share-message', data => setMessages([...messages,data]));
 
     function handelClick() {
         input === '' ? null : socket.emit('code-share-message', input);
-        input === '' ? null : setInput("");
+        input === '' ? null : setInput("")
     }
 
     return (
@@ -19,7 +19,9 @@ export default function SidebarLiveChat({socket}) {
             <div className="chat-heading" id="chat-heading">Live Chat</div>
             <div className="message-wrapper">
                 {
-                    messages.map(message => <p className="message">{message}</p>)
+                    messages.map((message, index) => {
+                        return <p className="message" key={index}> {message} </p>
+                    })
                 }
             </div>
             <div className="input-send">

@@ -11,13 +11,10 @@ import {faCompressAlt, faExpandAlt} from "@fortawesome/free-solid-svg-icons";
 export default function Editor(props) {
     let {language, displayName, value, onChange, socketVar} = props;
     const [open, setOpen] = useState(true);
-    const [val,stVl] = useState(value);
+    const [val, stVl] = useState(value);
 
     function handleChange(editor, data, value) {
-        var timer = setTimeout(()=>{
-            socketVar.emit(language, value);
-            clearTimeout(timer);
-        },1000)
+        socketVar.emit(language, value);
         onChange(value);
     }
 
@@ -28,8 +25,7 @@ export default function Editor(props) {
                 <button
                     type="button"
                     className="expand-collapse-btn"
-                    onClick={() => setOpen((prevOpen) => !prevOpen)}
-                >
+                    onClick={() => setOpen((prevOpen) => !prevOpen)}>
                     <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt}/>
                 </button>
             </div>

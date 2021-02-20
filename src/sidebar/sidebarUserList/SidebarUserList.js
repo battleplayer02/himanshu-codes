@@ -8,11 +8,16 @@ export default function SidebarUserList({socket}) {
         console.log(data);
     });
 
+    socket.on("disconnect", (reason) => {
+        username.splice(users.findIndex(e => e.id === socket.id), 1);
+        socket.emit('username', username);
+    });
+
     return (
         <div className="scroll-wrapper">
             {
-                username ? username.map((item, index) => <User key={index} user={item}/>) :
-                    <p>Please add your <br/>username  to see others.</p>
+                username ? username.map((item, index) => <User key={index} user={item.name}/>) :
+                    <p>Please add your <br/>username to see others.</p>
             }
         </div>
     );

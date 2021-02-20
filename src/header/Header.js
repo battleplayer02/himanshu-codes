@@ -11,7 +11,13 @@ export default ({sendUserName, socketVar, flagSetter}) => {
     function handelClick() {
         if (name === '') {
         } else {
-            socketVar.emit('username', name);
+
+            socketVar.emit('username',
+                {
+                    id: socketVar.id,
+                    name: name
+                }
+            );
             setFlag(1)
             flagSetter(1)
         }
