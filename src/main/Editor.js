@@ -14,6 +14,7 @@ export default function Editor(props) {
     const [val, stVl] = useState(value);
 
     function handleChange(editor, data, value) {
+        console.log(editor,data,value)
         socketVar.emit(language, value);
         onChange(value);
     }

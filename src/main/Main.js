@@ -10,28 +10,24 @@ export default function Main({socket}) {
     const [srcDoc, setSrcDoc] = useState("");
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setSrcDoc(`
+        setSrcDoc(`
         <html>
           <body>${html}</body>
           <style>${css}</style>
           <script>${js}</script>
         </html>
       `);
-
-        }, 250);
-
-        return () => clearTimeout(timeout);
     }, [html, css, js]);
 
-    socket.on('xml', (serverData) => {
-        setHtml(serverData)
+    socket.on('xml-data', (serverData) => {
+        console.log('aaaa' + serverData)
+            setHtml(serverData)
     })
-    socket.on('css', (serverData) => {
-        setCss(serverData)
+    socket.on('css-data', (serverData) => {
+            setCss(serverData)
     })
-    socket.on('javascript', (serverData) => {
-        setJs(serverData)
+    socket.on('javascript-data', (serverData) => {
+            setJs(serverData)
     })
 
     return (

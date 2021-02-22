@@ -2,16 +2,12 @@ import {useState, useEffect} from "react";
 import User from "./User";
 
 export default function SidebarUserList({socket}) {
-    const [username, setusername] = useState(null)
-    socket.on('username', (data) => {
-        setusername(data);
+    const [username, setuSername] = useState(null)
+    socket.on('username-new', (data) => {
+        setuSername(data);
         console.log(data);
     });
 
-    socket.on("disconnect", (reason) => {
-        username.splice(users.findIndex(e => e.id === socket.id), 1);
-        socket.emit('username', username);
-    });
 
     return (
         <div className="scroll-wrapper">

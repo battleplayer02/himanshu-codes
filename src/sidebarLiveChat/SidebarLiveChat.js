@@ -4,14 +4,16 @@ export default function SidebarLiveChat({socket}) {
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
     const [data, setData] = useState([]);
-
-    // var fun = () => messages.map(mes => <p className="message">{mes}</p>)
-
-    socket.on('code-share-message', data => setMessages([...messages,data]));
+    socket.on('chat', data => {
+        console.log(data)
+        setMessages([...messages, data])
+    });
 
     function handelClick() {
-        input === '' ? null : socket.emit('code-share-message', input);
+        console.log("abcd")
+        input === '' ? null : socket.emit('chat', input);
         input === '' ? null : setInput("")
+        setMessages([...messages,input])
     }
 
     return (
